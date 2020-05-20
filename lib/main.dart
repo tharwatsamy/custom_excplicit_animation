@@ -33,16 +33,14 @@ class _CustomImplicitAnimationState extends State<CustomImplicitAnimation> {
           TweenAnimationBuilder<double>(
             duration: Duration(seconds: 2),
             tween: Tween(begin: 0, end: _angle),
-            builder: (_, double angle, __) => Transform.rotate(
+            child: Container(
+              height: 200,
+              width: 300,
+              color: Colors.black,
+            ),
+            builder: (_, double angle, Widget child) => Transform.rotate(
               angle: angle,
-              child: GestureDetector(
-                onTap: changeAngle,
-                child: Container(
-                  height: 200,
-                  width: 300,
-                  color: Colors.black,
-                ),
-              ),
+              child: child,
             ),
           ),
           Slider(
@@ -58,12 +56,5 @@ class _CustomImplicitAnimationState extends State<CustomImplicitAnimation> {
         ],
       ),
     );
-  }
-
-  void changeAngle() {
-//    setState(() {
-//      _angle= math.pi/2;
-//
-//    });
   }
 }
